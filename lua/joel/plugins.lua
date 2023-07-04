@@ -43,36 +43,28 @@ packer.init({
 })
 
 return packer.startup(function(use)
-	use "wbthomason/packer.nvim"
-	use "lervag/vimtex"
-	use {
-		"nvim-telescope/telescope.nvim", tag = "0.1.1",
-		requires = { {"nvim-lua/plenary.nvim"} }
-	}
-	use { "folke/tokyonight.nvim" }
-	use("nvim-treesitter/nvim-treesitter", {run =  ":TSUpdate"})
-	use("mbbill/undotree")
-	use{"VonHeikemen/lsp-zero.nvim", branch = "v2.x",
-		requires = { 
+	use ({"wbthomason/packer.nvim"})
+	use ({"lervag/vimtex"})
+	use ({"nvim-telescope/telescope.nvim", tag = "0.1.1", requires = {"nvim-lua/plenary.nvim"} })
+	use ({"folke/tokyonight.nvim" })
+	use ({"nvim-treesitter/nvim-treesitter", run =  ":TSUpdate"})
+	use ({"mbbill/undotree"})
+	use ({"VonHeikemen/lsp-zero.nvim", branch = "v2.x", 
+		requires = {
 			{"neovim/nvim-lspconfig"},
-			{"williamboman/mason.nvim",
-			build = function()
-				pcall(vim.cmd, "MasonUpdate")
-			end},
+			{"williamboman/mason.nvim", build = function() pcall(vim.cmd, "MasonUpdate") end},
 			{"williamboman/mason-lspconfig.nvim"},
-			{"hrsh7th/nvim-cmp"},     -- Required
-			{"hrsh7th/cmp-nvim-lsp"}, -- Required
+			{"hrsh7th/nvim-cmp"},
+			{"hrsh7th/cmp-nvim-lsp"},
 			{"L3MON4D3/LuaSnip"},
 		}
-	}
-	use "nvim-tree/nvim-web-devicons"
-	use "lukas-reineke/indent-blankline.nvim"
-	use "preservim/nerdtree"
-	use "markonm/traces.vim"
-	use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-		require("toggleterm").setup()
-
-	end}
+	})
+	use ({"nvim-tree/nvim-web-devicons"})
+	use ({"lukas-reineke/indent-blankline.nvim"})
+	use ({"preservim/nerdtree"})
+	use ({"markonm/traces.vim"})
+	use ({"ThePrimeagen/harpoon"})
+	
 if packer_bootstrap then
 	packer.sync()
 end
